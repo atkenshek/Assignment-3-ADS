@@ -10,13 +10,10 @@ public class Main {
 
     private static void sort (int[] x, int start, int end){
         if (start < end) {
-            //Found the middle point of array
-            int middle = start + (end - start) / 2;
-            //There sorted first and second halves of array
-            sort(x, start, middle);
+            int middle = start + (end - start) / 2; //Found the middle point of array
+            sort(x, start, middle); //There sorted first and second halves of array
             sort(x, middle + 1, end);
-            //Then merged the sorted halves
-            merge(x, start, end, middle);
+            merge(x, start, end, middle); //Then merged the sorted halves
         }
     }
     public static void merge (int[] x, int start, int end, int middle){
@@ -35,7 +32,9 @@ public class Main {
         }
 
         int i = 0, j = 0;
-        int k = start; //Initial index of merged array
+        //Initial index of merged array
+        int k = start;
+
         //Merge array
         while(i < size1 && j < size2){
             if(a[i] <= b[j]){
@@ -49,12 +48,12 @@ public class Main {
             k++;
         }
 
-        while(i < size1){
+        while(i < size1){ //Copy remaining elements of a[]
             x[k] = a[i];
             i++;
             k++;
         }
-        while(j < size2){
+        while(j < size2){ //Copy remaining elements of b[]
             x[k] = b[j];
             j++;
             k++;
@@ -62,13 +61,13 @@ public class Main {
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
+        int n = scanner.nextInt(); //n is size of array
         int[] arr = new int[n];
         for(int i = 0; i<n; i++){
-            arr[i] = scanner.nextInt();
+            arr[i] = scanner.nextInt(); //Input array
         }
-        sort(arr, 0, arr.length-1);
-        for (int i = 0; i < arr.length; i++){
+        sort(arr); //Called our method
+        for (int i = 0; i < arr.length; i++){ //Output the result
             System.out.print(arr[i] + " ");
         }
 
